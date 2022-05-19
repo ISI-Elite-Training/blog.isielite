@@ -7,9 +7,9 @@
     },
     "license": "MIT",
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "Chandler Chappell",
+        "email": "chan@ady.world",
+        "url": "https://blog.isielite.training"
     },
     "keywords": [
         "ghost",
@@ -48,7 +48,7 @@
             "body_font": {
                 "type": "select",
                 "options": ["Modern sans-serif", "Elegant serif"],
-                "default": "Elegant serif"
+                "default": "Modern sans-serif"
             },
             "header_style": {
                 "type": "select",
@@ -60,7 +60,7 @@
             },
             "email_signup_text": {
                 "type": "text",
-                "default": "Don't miss out on the latest news. Sign up now to get access to the library of members-only articles."
+                "default": "Don't miss out on the latest stories and news. Subscribe to recieve email updates."
             },
             "footer_text": {
                 "type": "text"
