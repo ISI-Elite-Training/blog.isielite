@@ -1,13 +1,14 @@
-name: ISI® Elite Blog
+name: Deploy Theme
 on:
   push:
     branches:
+      - master
       - main
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@master
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1.5.0
         with:
