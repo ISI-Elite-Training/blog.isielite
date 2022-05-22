@@ -5,7 +5,7 @@
     --font-serif: Lora, Georgia, Times, serif; /* stylelint-disable-line value-keyword-case */
     --head-nav-gap: 32px;
     --color-primary-text: var(--color-darker-gray);
-    --h1-size: 4.4rem;
+    --h1-size: 4.5rem;
 }
 
 figcaption {
