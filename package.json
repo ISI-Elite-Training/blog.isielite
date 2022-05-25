@@ -7,6 +7,11 @@
   },
   "license": "MIT",
   "author": "Ghost Foundation <hello@ghost.org> (https://ghost.org)",
+  "author": {
+        "name": "Chandler Chappell",
+        "email": "chan@ady.world",
+        "url": "https://blog.isielitetraining.com/"
+    },
   "keywords": [
     "ghost",
     "theme",
