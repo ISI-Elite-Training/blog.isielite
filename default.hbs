@@ -8,94 +8,38 @@
     <link rel="preconnect" href="https://spaces.isielite.space">
     <link rel="preconnect" href="https://spaces.isielite.space" crossorigin>
     <link rel="stylesheet" href="https://spaces.isielite.space/fonts/atkinson-hyperlegible/atkinson-hyper.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Inter:wght@400;500;600;700;800&display=swap">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,400;0,700;0,800;1,400;1,700&family=Lora:ital,wght@0,400;0,700;1,400;1,700&display=swap">
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
+
     {{ghost_head}}
 </head>
 
-<body class="{{body_class}}{{{block "body_class"}}} {{#if @site.description}}is-head-b--a_n{{else}}is-head-b--n--a{{/if}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}{{#is "tag"}}{{#if tag.feature_image}} is-head-transparent{{/if}}{{/is}}{{#match @custom.header_style "Accent color"}} is-head-brand{{/match}}{{#match @custom.header_style "Dark"}} is-head-dark{{/match}}">
-    <div class="gh-site">
-        <header id="gh-head" class="gh-head gh-outer">
-            <div class="gh-head-inner gh-inner">
-                {{#if @site.description}}
-                    <a class="gh-head-description" href="{{@site.url}}">{{@site.description}}</a>
-                {{/if}}
+<body class="{{body_class}}{{{block "body_class"}}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Elegant serif"}} has-serif-body{{/match}}">
+    <div class="site">
+        {{> header}}
 
-                <div class="gh-head-brand">
-                    <a class="gh-head-logo" href="{{@site.url}}">
-                        {{#if @site.logo}}
-                            <img src="{{@site.logo}}" alt="{{@site.title}}">
+        {{#is "home"}}
+            {{> cover}}
+            {{#if @custom.show_featured_posts}}
+                {{> featured}}
+            {{/if}}
+        {{/is}}
 
-                            {{#if @custom.white_publication_logo_for_transparent_header}}
-                                <img src="{{@custom.white_publication_logo_for_transparent_header}}" alt="{{@site.title}}">
-                            {{/if}}
-                        {{else}}
-                            {{@site.title}}
-                        {{/if}}
-                    </a>
-                    <button class="gh-burger"></button>
-                </div>
+        <div class="site-content">
+            {{{body}}}
+        </div>
 
-                <nav class="gh-head-menu">
-                    {{navigation}}
-                </nav>
-
-                <div class="gh-head-actions">
-                    {{#unless @member}}
-                        <a class="gh-head-btn gh-btn gh-primary-btn" href="#/portal/signup" data-portal="signup">Subscribe</a>
-                    {{else}}
-                        <a class="gh-head-btn gh-btn" href="#/portal/account" data-portal="account">Account</a>
-                    {{/unless}}
-                </div>
-            </div>
-        </header>
-
-        {{!-- {{navigation}} --}}
-
-        {{{body}}}
-
-        <footer class="gh-foot gh-outer">
-            <div class="gh-foot-inner gh-inner">
-                {{^if @member.paid}}
-                    <section class="gh-subscribe">
-                        {{^if @member}}
-                            <h4 class="gh-subscribe-title">Subscribe to {{@site.title}}</h3>
-
-                            {{#if @custom.email_signup_text}}
-                                <div class="gh-subscribe-description">{{@custom.email_signup_text}}</div>
-                            {{/if}}
-
-                            <button class="gh-subscribe-btn gh-btn" data-portal="signup">{{> "icons/email"}} Subscribe now</button>
-                        {{else}}
-                            <h3 class="gh-subscribe-title">Ready for unlimited access?</h3>
-
-                            <div class="gh-subscribe-description">Upgrade to a paid account to get full access to all content.</div>
-
-                            <button class="gh-subscribe-btn gh-btn" data-portal="account/plans">Upgrade now</button>
-                        {{/if}}
-                    </section>
-                {{/if}}
-
-                <nav class="gh-foot-menu">
-                    {{navigation type="secondary"}}
-                </nav>
-
-                <div class="gh-copyright">
-                    {{#unless @custom.footer_text}}
-                        {{@site.title}} © {{date format="YYYY"}}.
-                    {{else}}
-                        {{@custom.footer_text}}
-                    {{/unless}}
-                </div>
-            </div>
-        </footer>
+        {{> footer}}
+        {{> pswp}}
     </div>
 
-    {{#is "post, page"}}
-        {{> pswp}}
-    {{/is}}
+    {{!-- Fixes 100vh issue on mobile browsers with toolbar on the bottom --}}
+    <script>
+        if (document.body.classList.contains('with-full-cover') && (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+            document.getElementsByClassName('cover')[0].style.height = window.innerHeight + 'px';
+        }
+    </script>
 
     <script src="{{asset "built/main.min.js"}}"></script>
 
